@@ -4,14 +4,13 @@
 #include "cinder/params/Params.h"
 #include "cinder/Rand.h"
 
-
 using namespace ci;
 using namespace ci::app;
 using namespace std;
 
 class _TBOX_PREFIX_App : public AppNative {
   public:
-  	void prepareSettings( AppBasic::Settings *settings ) override;
+	void prepareSettings( AppBasic::Settings *settings ) override;
 	void setup() override;
 	void update() override;
 	void draw() override;
@@ -32,12 +31,12 @@ class _TBOX_PREFIX_App : public AppNative {
 
 void _TBOX_PREFIX_App::prepareSettings( AppBasic::Settings *settings )
 {
-    settings->setFrameRate(60);
-    settings->setWindowSize(1024, 768);
-    //settings->setAlwaysOnTop();
-    //settings->setBorderless();
-    //settings->setWindowPos( 0, 0 );
-    //settings->setFullScreen();
+	settings->setFrameRate(60);
+	settings->setWindowSize(1024, 768);
+	//settings->setAlwaysOnTop();
+	//settings->setBorderless();
+	//settings->setWindowPos( 0, 0 );
+	//settings->setFullScreen();
 }
 
 
@@ -108,8 +107,8 @@ void _TBOX_PREFIX_App::keyUp( KeyEvent event )
 	if( event.getChar() == 'f' ) {
 		app::setFullScreen( !app::isFullScreen() );
 	} else if(event.getChar()==KeyEvent::KEY_SPACE) {
-        mParams.maximize( !mParams.isMaximized() );
-    }
+		mParams.maximize( !mParams.isMaximized() );
+	}
 }
 
 void _TBOX_PREFIX_App::shutdown()
