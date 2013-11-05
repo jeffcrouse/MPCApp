@@ -12,9 +12,9 @@ class _TBOX_PREFIX_App : public AppNative {
   public:
 	void prepareSettings( AppBasic::Settings *settings ) override;
 	void setup() override;
+	void resize() override;
 	void update() override;
 	void draw() override;
-	void resize() override;
 	void mouseMove( MouseEvent event ) override;
 	void mouseDown( MouseEvent event ) override;
 	void mouseDrag( MouseEvent event ) override;
@@ -23,7 +23,7 @@ class _TBOX_PREFIX_App : public AppNative {
 	void keyDown( KeyEvent event ) override;
 	void keyUp( KeyEvent event ) override;
 	void shutdown() override;
-
+private:
 	params::InterfaceGl mParams;
 	Timer mTimer;
 	float mFrameRate;
@@ -33,12 +33,12 @@ void _TBOX_PREFIX_App::prepareSettings( AppBasic::Settings *settings )
 {
 	settings->setFrameRate(60);
 	settings->setWindowSize(1024, 768);
-	//settings->setAlwaysOnTop();
-	//settings->setBorderless();
-	//settings->setWindowPos( 0, 0 );
-	//settings->setFullScreen();
+//	settings->enableHighDensityDisplay();
+//	settings->setAlwaysOnTop();
+//	settings->setBorderless();
+//	settings->setWindowPos( 0, 0 );
+//	settings->setFullScreen();
 }
-
 
 void _TBOX_PREFIX_App::setup()
 {
@@ -56,6 +56,11 @@ void _TBOX_PREFIX_App::setup()
 	glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
 }
 
+void _TBOX_PREFIX_App::resize()
+{
+	console() << getWindowBounds();
+}
+
 void _TBOX_PREFIX_App::update()
 {
 	float deltaTime = mTimer.getSeconds();
@@ -71,11 +76,6 @@ void _TBOX_PREFIX_App::draw()
 
 	// Draw the interface
 	mParams.draw();
-}
-
-void _TBOX_PREFIX_App::resize()
-{
-	console() << getWindowBounds();
 }
 
 void _TBOX_PREFIX_App::mouseDown( MouseEvent event )
